@@ -11,18 +11,18 @@
 		<div class="row">
 			<div class="col-lg-2">
 				<div class="btn mtop100">
-  					<button type="button" class="btn btn-default">Girl meets boy<br/><span class="purple">GENERATE STORY!</span></button>
   					<div><img src="images/swirl.png"/></div>
 				</div>
 			</div>
 			<div class="starter-template col-lg-8">
 				<h1 class="mbottom40">Girl Meets Boy</h1>
+				<button type="button" class="btn btn-default">Girl meets boy<br/><span class="purple newStory">GENERATE NEW STORY!</span></button>
+				<div><a href="index.html">Back to home page</a></div>
 				<div class="meet">
 				</div>
 			</div>
 			<div class="col-lg-2">
 				<div class="btn mtop100">
-  					<button type="button" class="btn btn-default">Girl breaks up with boy<br/><span class="purple">GENERATE STORY!</span></button>
   					<div><img src="images/swirl2.png"/></div>
 				</div>
 			</div>
@@ -33,39 +33,41 @@
 	<script>
 
 		$(document).ready(function(){
-			var arr = [
-				{
-					img : "smile.png",
-					msg : "That first connection moment..."
-				},
-				{
-					img : "sun-blinded.png",
-					msg : "Happiness blinding me."
-				},
-				{
-					img : "foot-bed.png",
-					msg : "Lazy weekends in bed."
-				},
-				{
-					img : "toothbrush.png",
-					msg : "Staying overnight."
-				}
-			]
+			function getStory(){
+				var arr = [
+					{
+						img : "smile.png",
+						msg : "That first connection moment..."
+					},
+					{
+						img : "sun-blinded.png",
+						msg : "Happiness blinding me."
+					},
+					{
+						img : "foot-bed.png",
+						msg : "Lazy weekends in bed."
+					},
+					{
+						img : "toothbrush.png",
+						msg : "Staying overnight."
+					}
+				]
+				$('.meet').html("");
+				for (var i = 0; i < 4; i++) {
+					var randomIndex= Math.floor(Math.random() * arr.length);
+					var randomElement = arr[randomIndex];
+					var image = $('<img>').attr('src', 'images/'+randomElement.img).addClass('mtop20');
+					var text = $('<div>').text(randomElement.msg);
+					$('.meet').append(image).append(text);
+					arr.splice(randomIndex, 1);				
+				};
+			}
+			getStory();
 
-		
-
-			for (var i = 0; i < 4; i++) {
-				console.log(arr);
-				var randomIndex= Math.floor(Math.random() * arr.length);
-				var randomElement = arr[randomIndex];
-				var image = $('<img>').attr('src', 'images/'+randomElement.img).addClass('mtop20');
-				var text = $('<div>').text(randomElement.msg);
-				$('.meet').append(image).append(text);
-				arr.splice(randomIndex, 1);				
-			};
-			
-
-
+			$('.newStory').click(function(e){
+				e.preventDefault();
+				getStory();
+			});
 		});
 
 	</script>
