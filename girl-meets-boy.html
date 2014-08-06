@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+ <head>
+	<meta charset="utf-8">
+	<title>Girl meets boy</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2">
+				<div class="btn mtop100">
+  					<button type="button" class="btn btn-default">Girl meets boy<br/><span class="purple">GENERATE STORY!</span></button>
+  					<div><img src="images/swirl.png"/></div>
+				</div>
+			</div>
+			<div class="starter-template col-lg-8">
+				<h1 class="mbottom40">Girl Meets Boy</h1>
+				<div class="meet">
+				</div>
+			</div>
+			<div class="col-lg-2">
+				<div class="btn mtop100">
+  					<button type="button" class="btn btn-default">Girl breaks up with boy<br/><span class="purple">GENERATE STORY!</span></button>
+  					<div><img src="images/swirl2.png"/></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+			var arr = [
+				{
+					img : "smile.png",
+					msg : "That first connection moment..."
+				},
+				{
+					img : "sun-blinded.png",
+					msg : "Happiness blinding me."
+				},
+				{
+					img : "foot-bed.png",
+					msg : "Lazy weekends in bed."
+				},
+				{
+					img : "toothbrush.png",
+					msg : "Staying overnight."
+				}
+			]
+
+		
+
+			for (var i = 0; i < 4; i++) {
+				console.log(arr);
+				var randomIndex= Math.floor(Math.random() * arr.length);
+				var randomElement = arr[randomIndex];
+				var image = $('<img>').attr('src', 'images/'+randomElement.img).addClass('mtop20');
+				var text = $('<div>').text(randomElement.msg);
+				$('.meet').append(image).append(text);
+				arr.splice(randomIndex, 1);				
+			};
+			
+
+
+		});
+
+	</script>
+
+
+
+</body>
+</html>
